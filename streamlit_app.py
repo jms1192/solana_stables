@@ -57,7 +57,7 @@ with st.echo(code_location='below'):
     symbols = st.multiselect("Choose asset to visualize", all_symbols, all_symbols[:3])
 
     vol_data = []
-    for i in symbols
+    for i in symbols:
         vol = [x['SWAP_VOLUME'] for x in data if x['ASSET'] == i]
         vol_data.append(vol)
     
