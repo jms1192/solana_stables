@@ -59,9 +59,27 @@ with st.echo(code_location='below'):
     vol_data = []
     for i in symbols:
         vol = [x['SWAP_VOLUME'] for x in data if x['ASSET'] == i]
+        vol = 2
         vol_data.append(vol)
         
     vol_data = [[1,2,3],[3,2,1],[2,1,3]]
+    
+    vol_data = []
+    vol = []
+    day = ''
+    for x in data:
+        if x['ASSET'] in symbols:
+            if not x['DAY'] == day:
+                day = x['DAY']
+                
+                if len(vol) > 0:
+                   vol_data.append(vol)
+                
+                vol.clear()
+                vol.append(x['SWAP_VOLUME'])
+            else:
+                vol.append(x['SWAP_VOLUME'])
+                
     
     source = pd.DataFrame(
         vol_data,
