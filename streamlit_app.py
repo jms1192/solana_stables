@@ -37,12 +37,12 @@ with st.echo(code_location='below'):
         .mark_circle(color='#0068c9', opacity=0.5)
         .encode(x='x:Q', y='y:Q'))
     
-    data = requests.get('https://api.flipsidecrypto.com/api/v2/queries/0b221009-cbdd-4c47-b815-cd7cf837462d/data/latest').json()
+    data = requests.get('https://node-api.flipsidecrypto.com/api/v2/queries/5c5ecaee-e9da-4ff6-b62d-651711f9d324/data/latest').json()
     
     chart_data = pd.DataFrame(
-        [x['SWAP_FEES'] for x in data],
-        [x['DAY'] for x in data],
-        [x['POOL_NAME'] for x in data]
+        [x['SWAP_VOLUME'] for x in data],
+        [x['DAY'] for x in data]
+        
         
     )
     st.bar_chart(chart_data)
