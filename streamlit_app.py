@@ -75,7 +75,7 @@ with st.echo(code_location='below'):
                 if len(vol) > 0:
                    vol_data.append(vol)
                 
-                vol.clear()
+                vol = []
                 vol.append(x['SWAP_VOLUME'])
             else:
                 vol.append(x['SWAP_VOLUME'])
