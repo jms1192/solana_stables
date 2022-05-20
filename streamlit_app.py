@@ -4,6 +4,7 @@ import math
 import pandas as pd
 import streamlit as st
 import numpy as np
+import requests
 
 """
 # Swapping for YLDLY on DEXs
@@ -36,8 +37,10 @@ with st.echo(code_location='below'):
         .mark_circle(color='#0068c9', opacity=0.5)
         .encode(x='x:Q', y='y:Q'))
     
+    data = requests.get('https://api.flipsidecrypto.com/api/v2/queries/0b221009-cbdd-4c47-b815-cd7cf837462d/data/latest').json()
+    
     chart_data = pd.DataFrame(
-        np.random.randn(50, 3),
+        np.random.randn([x['DAY'] for x in data], [x['SWAP_FEES'] for x in data]),
         columns=["a", "b", "c"])
 
     st.bar_chart(chart_data)
