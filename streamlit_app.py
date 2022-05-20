@@ -56,6 +56,6 @@ with st.echo(code_location='below'):
     
     symbols = st.multiselect("Choose stocks to visualize", all_symbols, all_symbols[:3])
 
-    source = [x['SWAP_VOLUME'], x['DAY'] for x in data if x['ASSET'] in symbols]
+    source = [(x['SWAP_VOLUME'], x['DAY']) for x in data if x['ASSET'] in symbols]
     chart = chart.get_chart(source)
     st.altair_chart(chart, use_container_width=True)
