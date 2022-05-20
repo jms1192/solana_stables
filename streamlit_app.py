@@ -56,7 +56,10 @@ with st.echo(code_location='below'):
     
     symbols = st.multiselect("Choose asset to visualize", all_symbols, all_symbols[:3])
 
-    source = pd.DataFrame([[x['SWAP_VOLUME'], x['DAY']] for x in data if x['ASSET'] in symbols])
+    source = pd.DataFrame(
+        [x['SWAP_VOLUME'] for x in data if x['ASSET'] in symbols],
+        [x['DAY'] for x in data if x['ASSET'] in symbols]
+    )
     ##chart = chart.get_chart(chart_data)
     
     st.bar_chart(source)
