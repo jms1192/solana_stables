@@ -51,7 +51,7 @@ with st.echo(code_location='below'):
     symbols = [x['ASSET'] for x in data]
     all_symbols = []
     for i in symbols:
-        if i not in res:
+        if i not in all_symbols:
             all_symbols.append(i)
     
     symbols = st.multiselect("Choose stocks to visualize", all_symbols, all_symbols[:3])
