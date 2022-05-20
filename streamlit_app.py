@@ -49,7 +49,7 @@ with st.echo(code_location='below'):
     
     source = data
     symbols = [x['ASSET'] for x in data]
-    all_symbols []
+    all_symbols = []
     for i in symbols:
     if i not in res:
         all_symbols.append(i)
