@@ -55,14 +55,6 @@ with st.echo(code_location='below'):
             all_symbols.append(i)
     
     symbols = st.multiselect("Choose asset to visualize", all_symbols, all_symbols[:3])
-
-    vol_data = []
-    for i in symbols:
-        vol = [x['SWAP_VOLUME'] for x in data if x['ASSET'] == i]
-        vol = 2
-        vol_data.append(vol)
-        
-    
     
     vol_data = []
     vol = []
@@ -81,6 +73,7 @@ with st.echo(code_location='below'):
                 vol.append(x['SWAP_VOLUME'])
                 
     ###vol_data = [[1,2,3],[3,2,1],[2,4,3]]
+    symbols.sort()
     
     source = pd.DataFrame(
         vol_data,
