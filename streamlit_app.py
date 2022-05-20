@@ -61,7 +61,7 @@ with st.echo(code_location='below'):
         vol = [x['SWAP_VOLUME'] for x in data if x['ASSET'] == i]
         vol_data.append(vol)
         
-     vol_data = [[1,2,3][3,2,1][2,1,3]]
+     vol_data = [[1,2,3],[3,2,1],[2,1,3]]
     
     source = pd.DataFrame(
         vol_data,
