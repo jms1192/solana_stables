@@ -63,4 +63,4 @@ with st.echo(code_location='below'):
     )
     ##chart = chart.get_chart(chart_data)
     
-    st.altair_chart(source)
+    st.bar_chart(source)
