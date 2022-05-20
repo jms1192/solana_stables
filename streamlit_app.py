@@ -41,7 +41,6 @@ with st.echo(code_location='below'):
     
     chart_data = pd.DataFrame(
         [x['SWAP_FEES'] for x in data],
-        [x['DAY'] for x in data],
-        columns=["a", "b", "c"])
+        [x['DAY'] for x in data]
 
     st.bar_chart(chart_data)
