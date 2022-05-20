@@ -54,8 +54,8 @@ with st.echo(code_location='below'):
         if i not in all_symbols:
             all_symbols.append(i)
     
-    symbols = st.multiselect("Choose stocks to visualize", all_symbols, all_symbols[:3])
+    symbols = st.multiselect("Choose asset to visualize", all_symbols, all_symbols[:3])
 
     source = [(x['SWAP_VOLUME'], x['DAY']) for x in data if x['ASSET'] in symbols]
-    chart = chart.get_chart(source)
+    chart = chart.get_chart(chart_data)
     st.altair_chart(chart, use_container_width=True)
