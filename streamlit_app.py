@@ -64,7 +64,7 @@ with st.echo(code_location='below'):
     ##vol_data = [[1,2,3],[3,2,1],[2,1,3]]
     
     source = pd.DataFrame(
-        vol_data,
+        [x['SWAP_VOLUME'] for x in data if x['ASSET'] in symbols],
         ##[x['DAY'] for x in data if x['ASSET'] in symbols],
         columns=symbols 
     )
