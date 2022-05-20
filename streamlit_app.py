@@ -65,7 +65,7 @@ with st.echo(code_location='below'):
     
     source = pd.DataFrame(
         vol_data,
-        [x['DAY'] for x in data if x['ASSET'] in symbols],
+        ##[x['DAY'] for x in data if x['ASSET'] in symbols],
         columns=symbols 
     )
     ##chart = chart.get_chart(chart_data)
