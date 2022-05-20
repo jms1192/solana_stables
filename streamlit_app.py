@@ -59,7 +59,7 @@ with st.echo(code_location='below'):
     source = pd.DataFrame(
         [x['SWAP_VOLUME'] for x in data if x['ASSET'] in symbols],
         [x['DAY'] for x in data if x['ASSET'] in symbols],
-        symbols
+        ["a", "b", "c"]
     )
     ##chart = chart.get_chart(chart_data)
     
