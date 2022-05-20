@@ -48,7 +48,12 @@ with st.echo(code_location='below'):
     st.bar_chart(chart_data)
     
     source = data
-    all_symbols = [x['ASSET'] for x in data]
+    symbols = [x['ASSET'] for x in data]
+    all_symbols []
+    for i in symbols:
+    if i not in res:
+        all_symbols.append(i)
+    
     symbols = st.multiselect("Choose stocks to visualize", all_symbols, all_symbols[:3])
 
     space(1)
