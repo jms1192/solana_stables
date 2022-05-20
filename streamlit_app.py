@@ -12,12 +12,7 @@ Is swapping for YLDY more popular on some DEXs than others?
 What assets are users swapping for YLDLY?
 
 Are there any standout days of swap volume for Yieldly?
-
-
-
-
 """
-
 
 with st.echo(code_location='below'):
     total_points = st.slider("Number of points in spiral", 1, 9000, 2000)
@@ -39,3 +34,9 @@ with st.echo(code_location='below'):
     st.altair_chart(alt.Chart(pd.DataFrame(data), height=500, width=500)
         .mark_circle(color='#0068c9', opacity=0.5)
         .encode(x='x:Q', y='y:Q'))
+    
+    chart_data = pd.DataFrame(
+        np.random.randn(50, 3),
+        columns=["a", "b", "c"])
+
+    st.bar_chart(chart_data)
