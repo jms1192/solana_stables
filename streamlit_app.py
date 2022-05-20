@@ -40,7 +40,7 @@ with st.echo(code_location='below'):
     data = requests.get('https://api.flipsidecrypto.com/api/v2/queries/0b221009-cbdd-4c47-b815-cd7cf837462d/data/latest').json()
     
     chart_data = pd.DataFrame(
-        np.random.randn([x['DAY'] for x in data], [x['SWAP_FEES'] for x in data]),
+        [x['DAY'] for x in data],
         columns=["a", "b", "c"])
 
     st.bar_chart(chart_data)
