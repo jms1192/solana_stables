@@ -76,7 +76,7 @@ with st.echo(code_location='below'):
     symbols.sort()
     
     source = pd.DataFrame(
-        [x['DAY'] for x in data if x['ASSET'] in symbols],
+        [x['DAY'] for x in data if x['ASSET'] == symbols[0]],
         vol_data,
         columns=symbols 
     )
