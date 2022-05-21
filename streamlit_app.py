@@ -83,8 +83,6 @@ with st.echo(code_location='below'):
     st.bar_chart(chart)
     
     ### Pie chart 
-    
-    from streamlit_echarts import st_echarts
 
     options = {
         "xAxis": {
@@ -96,4 +94,4 @@ with st.echo(code_location='below'):
             {"data": [820, 932, 901, 934, 1290, 1330, 1320], "type": "line"}
         ],
     }
-    st.plotly_chart(["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], [820, 932, 901, 934, 1290, 1330, 1320])
+    st.plotly_chart(pie_data, ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], [820, 932, 901, 934, 1290, 1330, 1320])
