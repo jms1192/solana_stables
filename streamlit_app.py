@@ -94,7 +94,7 @@ with st.echo(code_location='below'):
     
     
     st.bar_chart(chart)
-    st.bar_chart(chart)
+    st.bar_chart(chart2)
 
     
     
