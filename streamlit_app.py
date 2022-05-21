@@ -62,10 +62,9 @@ with st.echo(code_location='below'):
     asset = ''
     count = 0
     for x in data:
+        count += 1
         if x['ASSET'] in symbols or count == len(data):
             if not x['ASSET'] == asset:
-                
-                
                 if asset == '':
                     asset = x['ASSET']
         
@@ -81,8 +80,6 @@ with st.echo(code_location='below'):
             else:
                 date_data.append(x['DAY'])
                 vol.append(x['SWAP_VOLUME'])
-                
-        count += 1
                 
     ###vol_data = [[1,2,3],[3,2,1],[2,4,3]]
     symbols.sort()
