@@ -77,7 +77,7 @@ with st.echo(code_location='below'):
             else:
                 date_data.append(x['DAY'])
                 vol.append(x['SWAP_VOLUME'])
-   ##vol_data[asset] = vol           
+    vol_data[asset] = vol           
                 
     ###vol_data = [[1,2,3],[3,2,1],[2,4,3]]
     symbols.sort()
