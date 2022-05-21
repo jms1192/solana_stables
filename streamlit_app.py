@@ -49,7 +49,7 @@ with st.echo(code_location='below'):
             all_symbols.append(i)
     
     symbols = st.multiselect("Choose asset to visualize", all_symbols, all_symbols[:9])
-    st.text("")
+    ##st.text("")
     
     ### Sort Data  
     vol_data = {}
