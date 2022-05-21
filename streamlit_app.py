@@ -20,7 +20,13 @@ Are there any standout days of swap volume for Yieldly?
 
 ### What is YLDLY?
 
-Yieldly is the a DeFi staking protocol built for Algorand, that allows holders of Algo to stake their assets and have the chance to earn a disproportionate reward. The native token of the Yieldly ecosystem is YLDLY.
+Yieldly is a DeFi staking protocol built for Algorand, that allows holders of Algo to stake their assets and have the chance to earn a disproportionate reward. The native token of the Yieldly ecosystem is YLDLY.
+
+### Methodology
+
+- We will look at the YLDLY token swap volume in terms of swap to asset and DEX. 
+
+- We are looking to see where and what assets people are swapping with YLDlY.
 
 """
 
