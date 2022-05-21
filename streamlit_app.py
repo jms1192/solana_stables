@@ -6,7 +6,7 @@ import streamlit as st
 import numpy as np
 import requests
 import plotly.figure_factory as FF
-from plotly.tools import FigureFactory as ff
+
 
 
 """
