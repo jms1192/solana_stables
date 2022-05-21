@@ -89,4 +89,4 @@ with st.echo(code_location='below'):
                   index=['Mercury', 'Venus', 'Earth'])
 
 
-    st.pie_chart(df)
+    st.altair_chart(df)
