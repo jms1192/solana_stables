@@ -92,7 +92,7 @@ with st.echo(code_location='below'):
     chart2 = pd.DataFrame(
        ##[sum(vol_data[x]) for x in vol_data],
        vol_data_sum,
-       index=[x for x in vol_data]
+       ##index=[x for x in vol_data]
     )
     
     
