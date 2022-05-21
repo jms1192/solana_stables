@@ -96,4 +96,4 @@ with st.echo(code_location='below'):
             {"data": [820, 932, 901, 934, 1290, 1330, 1320], "type": "line"}
         ],
     }
-    st_echarts(options=options)
+    st.plotly_chart(["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], [820, 932, 901, 934, 1290, 1330, 1320])
