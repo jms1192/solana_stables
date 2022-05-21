@@ -101,7 +101,7 @@ for i in symbols:
     if i not in all_symbols:
         all_symbols.append(i)
     
-symbols = st.multiselect("Choose asset to visualize", all_symbols, all_symbols[:9])
+symbols = st.multiselect("Choose DEX to visualize", all_symbols, all_symbols[:9])
 st.text("")
     
 ### Sort Data  
