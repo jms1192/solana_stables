@@ -5,6 +5,7 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 import requests
+import plotly.figure_factory as ff
 
 
 """
@@ -84,7 +85,7 @@ with st.echo(code_location='below'):
     
     ### Pie chart 
 
-    import plotly.figure_factory as ff
+    
 
 
     # Add histogram data
