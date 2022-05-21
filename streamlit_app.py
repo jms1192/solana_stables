@@ -82,7 +82,7 @@ with st.echo(code_location='below'):
     symbols.sort()
     
     source = pd.DataFrame(
-        date_data,
+        ##date_data,
         vol_data,
         columns=symbols 
     )
