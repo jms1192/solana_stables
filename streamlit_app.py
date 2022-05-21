@@ -82,7 +82,7 @@ with st.echo(code_location='below'):
         vol_data,
         index=date_data
     )
-    st.bar_chart(chart)
+    
     
     ### Pie chart 
     
@@ -97,6 +97,8 @@ with st.echo(code_location='below'):
        sum_vol,
        index=group_list
     )
+    
+    st.bar_chart(chart)
     st.bar_chart(chart2)
 
     
