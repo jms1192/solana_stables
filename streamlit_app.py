@@ -84,9 +84,16 @@ with st.echo(code_location='below'):
     
     ### Pie chart 
     
-    df = pd.DataFrame({'mass': [0.330, 4.87 , 5.97],
-                   'radius': [2439.7, 6051.8, 6378.1]},
-                  index=['Mercury', 'Venus', 'Earth'])
+    from streamlit_echarts import st_echarts
 
-
-    st.altair_chart(df)
+    options = {
+        "xAxis": {
+            "type": "category",
+            "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        },
+        "yAxis": {"type": "value"},
+        "series": [
+            {"data": [820, 932, 901, 934, 1290, 1330, 1320], "type": "line"}
+        ],
+    }
+    st_echarts(options=options)
