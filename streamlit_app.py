@@ -93,8 +93,9 @@ with st.echo(code_location='below'):
         group_list.append(key)
         
     chart2 = pd.DataFrame(
-       group_list,
-       sum_vol
+       
+       sum_vol,
+       index=group_list
     )
     st.bar_chart(chart2)
 
