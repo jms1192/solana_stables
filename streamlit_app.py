@@ -62,7 +62,7 @@ with st.echo(code_location='below'):
     asset = ''
     count = 0
     for x in data:
-        if x['ASSET'] in symbols or count + 1 == len(data):
+        if x['ASSET'] in symbols or count == len(data):
             if not x['ASSET'] == asset:
                 
                 
