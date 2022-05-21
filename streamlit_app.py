@@ -93,4 +93,4 @@ with st.echo(code_location='below'):
             shadow=True, startangle=90)
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
-    st.pyplot(fig1)
+    st.pie_chart(sizes)
