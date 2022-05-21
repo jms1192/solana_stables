@@ -57,15 +57,21 @@ with st.echo(code_location='below'):
     symbols = st.multiselect("Choose asset to visualize", all_symbols, all_symbols[:3])
     
     vol_data = []
+    date_data = []
     vol = []
     day = ''
     for x in data:
         if x['ASSET'] in symbols:
             if not x['DAY'] == day:
-                day = x['DAY']
-                
+                if day == '':
+                    day = x['DAY']  
+                else:
+                    date_data.append(day)
+                    day = x['DAY']
+                    
                 if len(vol) > 0:
-                   vol_data.append(vol)
+                    vol_data.append(vol)
+                    
                 
                 vol = []
                 vol.append(x['SWAP_VOLUME'])
@@ -76,7 +82,7 @@ with st.echo(code_location='below'):
     symbols.sort()
     
     source = pd.DataFrame(
-        [x['DAY'] for x in data if x['ASSET'] == symbols[0]],
+        date_data,
         vol_data,
         columns=symbols 
     )
