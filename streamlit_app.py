@@ -45,17 +45,18 @@ with st.echo(code_location='below'):
      
     )
     
+    ### pick symbols
     st.bar_chart(chart_data)
     
-    source = data
     symbols = [x['ASSET'] for x in data]
     all_symbols = []
     for i in symbols:
         if i not in all_symbols:
             all_symbols.append(i)
     
-    symbols = st.multiselect("Choose asset to visualize", all_symbols, all_symbols[:3])
+    symbols = st.multiselect("Choose asset to visualize", all_symbols, all_symbols[:9])
     
+    ### Sort Data  
     vol_data = {}
     date_data = []
     vol = []
@@ -79,15 +80,11 @@ with st.echo(code_location='below'):
                 vol.append(x['SWAP_VOLUME'])
     vol_data[asset] = vol           
                 
-    ###vol_data = [[1,2,3],[3,2,1],[2,4,3]]
     symbols.sort()
+    ### Display chart
     
-    source = pd.DataFrame(
-        ##date_data,
+    chart = pd.DataFrame(
         vol_data,
         index=date_data
-        ##columns=symbols 
     )
-    ##chart = chart.get_chart(chart_data)
-    
-    st.bar_chart(source)
+    st.bar_chart(chart)
