@@ -26,7 +26,7 @@ Yieldly is a DeFi staking protocol built for Algorand, that allows holders of Al
 
 - We will look at the YLDLY token swap volume in terms of swap to asset and DEX. 
 
-- We are looking to see where and what assets people are swapping with YLDlY.
+- We are looking to see where and what assets people are swapping with YLDlY in the passt 30 days.
 
 ## YLDLY token swap metrics 
 
@@ -93,6 +93,14 @@ with st.echo(code_location='below'):
     
     st.bar_chart(chart)
     st.bar_chart(chart2)
+"""
+### Observations 
 
+- The vast majority of all YLDLY swap volume was with the ALGO token.
+
+- The YLDLY token's swap volume has been declining over the past 30 days.
+
+- there were 2 days in the past month where the YLDLY token swap Volume was over 120 Million tokens.
+"""
     
     
