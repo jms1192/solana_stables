@@ -64,6 +64,7 @@ with st.echo(code_location='below'):
         if x['ASSET'] in symbols:
             if not x['ASSET'] == asset:
                 
+                
                 if asset == '':
                     asset = x['ASSET']
         
@@ -74,6 +75,8 @@ with st.echo(code_location='below'):
                 
                 vol = []
                 vol.append(x['SWAP_VOLUME'])
+                date_data = []
+                date_data.append(x['DAY])
             else:
                 vol.append(x['SWAP_VOLUME'])
                 
@@ -83,7 +86,7 @@ with st.echo(code_location='below'):
     source = pd.DataFrame(
         ##date_data,
         vol_data,
-        [x['DAY'] for x in data if x['ASSET'] == symbol[0] ]
+        date_data
         ##columns=symbols 
     )
     ##chart = chart.get_chart(chart_data)
