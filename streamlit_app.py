@@ -49,7 +49,7 @@ with st.echo(code_location='below'):
             all_symbols.append(i)
     
     symbols = st.multiselect("Choose asset to visualize", all_symbols, all_symbols[:9])
-    ##st.text("")
+    st.text("")
     
     ### Sort Data  
     vol_data = {}
@@ -86,20 +86,10 @@ with st.echo(code_location='below'):
     
     ### Pie chart 
     
-    group_list = []
-    sum_vol = []
-    for key in vol_data:
-        sum_vol.append(sum(vol_data[key])),
-        group_list.append(key)
-        
-    chart2 = pd.DataFrame(
-       
-       sum_vol,
-       index=group_list
-    )
+    
     
     st.bar_chart(chart)
-    st.bar_chart(chart2)
+    st.bar_chart(chart)
 
     
     
