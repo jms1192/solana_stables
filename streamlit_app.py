@@ -39,8 +39,6 @@ with st.echo(code_location='below'):
   
     ### pick symbols
     data = requests.get('https://node-api.flipsidecrypto.com/api/v2/queries/5c5ecaee-e9da-4ff6-b62d-651711f9d324/data/latest').json()
-    st.bar_chart(chart_data)
-    
     symbols = [x['ASSET'] for x in data]
     all_symbols = []
     for i in symbols:
