@@ -150,7 +150,7 @@ st.bar_chart(chart2)
     
 """
 ## Conclusion
-- Out of the 50 - 100 Million YLDLY tokens swapped daily only between 1 and 3 million of them are swapped on DEXs other than Tinyman.
+- Out of the 50 - 100 million YLDLY tokens swapped daily only between 1 and 3 million of them are swapped on DEXs other than Tinyman.
 
 - There were 2 days in the past month where the YLDLY token swap Volume was over 120 Million tokens.
 
