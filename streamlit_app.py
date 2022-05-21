@@ -56,21 +56,20 @@ with st.echo(code_location='below'):
     
     symbols = st.multiselect("Choose asset to visualize", all_symbols, all_symbols[:3])
     
-    vol_data = []
+    vol_data = {}
     date_data = []
     vol = []
-    day = ''
+    asset = ''
     for x in data:
         if x['ASSET'] in symbols:
-            if not x['DAY'] == day:
-                if day == '':
-                    day = x['DAY']  
+            if not x['ASSET'] == asset:
+                
+                if asset == '':
+                    asset = x['ASSET']
+        
                 else:
-                    date_data.append(day)
-                    day = x['DAY']
-                    
-                if len(vol) > 0:
-                    vol_data.append(vol)
+                    vol_data[asset] = vol
+                    asset = x['ASSET']
                     
                 
                 vol = []
@@ -83,8 +82,8 @@ with st.echo(code_location='below'):
     
     source = pd.DataFrame(
         ##date_data,
-        vol_data,
-        columns=symbols 
+        vol_data
+        ##columns=symbols 
     )
     ##chart = chart.get_chart(chart_data)
     
