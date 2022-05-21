@@ -84,9 +84,9 @@ with st.echo(code_location='below'):
     
     ### Pie chart 
     
-    labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
-    sizes = [15, 30, 45, 10]
-    explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+    df = pd.DataFrame({'mass': [0.330, 4.87 , 5.97],
+                   'radius': [2439.7, 6051.8, 6378.1]},
+                  index=['Mercury', 'Venus', 'Earth'])
 
 
-    st.pie_chart(sizes)
+    st.pie_chart(df)
