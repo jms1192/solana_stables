@@ -89,9 +89,9 @@ with st.echo(code_location='below'):
     group_list = []
     sum_vol = []
     for key in vol_data:
-        group_list.append(key),
-        sum_vol.append(sum(vol_data[key]))
-    
+        sum_vol.append(sum(vol_data[key])),
+        group_list.append(key)
+        
     chart2 = pd.DataFrame(
        group_list,
        sum_vol
