@@ -84,14 +84,22 @@ with st.echo(code_location='below'):
     
     ### Pie chart 
 
-    options = {
-        "xAxis": {
-            "type": "category",
-            "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        },
-        "yAxis": {"type": "value"},
-        "series": [
-            {"data": [820, 932, 901, 934, 1290, 1330, 1320], "type": "line"}
-        ],
-    }
-    st.plotly_chart(pie_data, ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], [820, 932, 901, 934, 1290, 1330, 1320])
+    import plotly.figure_factory as ff
+
+
+    # Add histogram data
+    x1 = np.random.randn(200) - 2
+    x2 = np.random.randn(200)
+    x3 = np.random.randn(200) + 2
+
+    # Group data together
+    hist_data = [x1, x2, x3]
+
+    group_labels = ['Group 1', 'Group 2', 'Group 3']
+
+    # Create distplot with custom bin_size
+    fig = ff.create_distplot(
+             hist_data, group_labels, bin_size=[.1, .25, .5])
+
+    # Plot!
+    st.plotly_chart(fig, use_container_width=True)
