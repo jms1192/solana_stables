@@ -76,8 +76,8 @@ with st.echo(code_location='below'):
     symbols.sort()
     
     source = pd.DataFrame(
+        [x['DAY'] for x in data if x['ASSET'] in symbols],
         vol_data,
-        ##[x['DAY'] for x in data if x['ASSET'] in symbols],
         columns=symbols 
     )
     ##chart = chart.get_chart(chart_data)
