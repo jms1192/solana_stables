@@ -92,8 +92,6 @@ st.bar_chart(chart2)
 - The vast majority of all YLDLY swap volume was with the ALGO token.
 
 - The YLDLY token's swap volume has been declining over the past 30 days.
-
-- There were 2 days in the past month where the YLDLY token swap Volume was over 120 Million tokens.
 """
 
 data = requests.get('https://node-api.flipsidecrypto.com/api/v2/queries/1cbd998e-fe68-4992-bd31-5c204fdf426a/data/latest').json()
@@ -150,6 +148,12 @@ chart2 = pd.DataFrame(
 st.bar_chart(chart)
 st.bar_chart(chart2)
     
-    
+"""
+## Conclusion
+- Out of the 50 - 100 Million YLDLY tokens swapped daily only between 1 and 3 million of them are swapped on DEXs other than Tinyman.
+
+- There were 2 days in the past month where the YLDLY token swap Volume was over 120 Million tokens.
+
+"""    
   
     
