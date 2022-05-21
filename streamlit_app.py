@@ -36,16 +36,9 @@ with st.echo(code_location='below'):
     st.altair_chart(alt.Chart(pd.DataFrame(data), height=500, width=500)
         .mark_circle(color='#0068c9', opacity=0.5)
         .encode(x='x:Q', y='y:Q'))
-    
-    data = requests.get('https://node-api.flipsidecrypto.com/api/v2/queries/5c5ecaee-e9da-4ff6-b62d-651711f9d324/data/latest').json()
-    
-    chart_data = pd.DataFrame(
-        [x['SWAP_VOLUME'] for x in data],
-        [x['DAY'] for x in data]
-     
-    )
-    
+  
     ### pick symbols
+    data = requests.get('https://node-api.flipsidecrypto.com/api/v2/queries/5c5ecaee-e9da-4ff6-b62d-651711f9d324/data/latest').json()
     st.bar_chart(chart_data)
     
     symbols = [x['ASSET'] for x in data]
