@@ -85,7 +85,12 @@ with st.echo(code_location='below'):
     
     
     ### Pie chart 
-    
+  
+        
+    chart2 = pd.DataFrame(
+       [sum(vol_data[x]) for x in vol_data],
+       index=[x for x in vol_data]
+    )
     
     
     st.bar_chart(chart)
