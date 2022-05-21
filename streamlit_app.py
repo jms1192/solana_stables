@@ -76,7 +76,7 @@ with st.echo(code_location='below'):
                 vol = []
                 vol.append(x['SWAP_VOLUME'])
                 date_data = []
-                date_data.append(x['DAY])
+                date_data.append(x['DAY'])
             else:
                 vol.append(x['SWAP_VOLUME'])
                 
