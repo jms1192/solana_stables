@@ -53,6 +53,7 @@ with st.echo(code_location='below'):
     
     ### Sort Data  
     vol_data = {}
+    vol_data_sum = {}
     date_data = []
     vol = []
     asset = ''
@@ -63,6 +64,7 @@ with st.echo(code_location='below'):
                     asset = x['ASSET']
         
                 else:
+                    vol_data_sum[asset] = sum(vol)
                     vol_data[asset] = vol
                     asset = x['ASSET']
                   
@@ -88,7 +90,8 @@ with st.echo(code_location='below'):
   
         
     chart2 = pd.DataFrame(
-       [sum(vol_data[x]) for x in vol_data],
+       ##[sum(vol_data[x]) for x in vol_data],
+       vol_data_sum,
        index=[x for x in vol_data]
     )
     
