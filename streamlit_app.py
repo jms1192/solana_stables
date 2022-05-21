@@ -17,6 +17,11 @@ Is swapping for YLDY more popular on some DEXs than others?
 What assets are users swapping for YLDLY?
 
 Are there any standout days of swap volume for Yieldly?
+
+### What is YLDLY?
+
+Yieldly is the a DeFi staking protocol built for Algorand, that allows holders of Algo to stake their assets and have the chance to earn a disproportionate reward. The native token of the Yieldly ecosystem is YLDLY.
+
 """
 
 with st.echo(code_location='below'):
