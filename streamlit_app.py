@@ -156,4 +156,22 @@ st.bar_chart(chart2)
 
 """    
   
-    
+ st.header("Compare other package downloads")
+
+    instructions = """
+    Click and drag line chart to select and pan date interval\n
+    Hover over bar chart to view downloads\n
+    Click on a bar to highlight that package
+    """
+    select_packages = st.multiselect(
+        "Select Python packages to compare",
+        package_names,
+        default=[
+            "pandas",
+            "keras",
+        ],
+        help=instructions,
+    )
+
+    select_packages_df = pd.DataFrame(select_packages).rename(columns={0: "project"})
+
