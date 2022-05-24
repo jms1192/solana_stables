@@ -7,3 +7,9 @@ pandas == 1.2.4
 keybert
 flair
 click<8
+db-types
+db-dtypes
+google-auth
+google-cloud-storage
+google-cloud
+
