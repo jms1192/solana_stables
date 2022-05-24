@@ -156,8 +156,7 @@ st.bar_chart(chart2)
 
 """    
   
-st.header("Compare other package downloads")
-
+    
 instructions = """
     Click and drag line chart to select and pan date interval\n
     Hover over bar chart to view downloads\n
