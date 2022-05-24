@@ -164,7 +164,7 @@ instructions = """
     """
 select_packages = st.multiselect(
     "Select Python packages to compare",
-    package_names,
+    ["pandas", "keras", "dasasd"],
     default=[
         "pandas",
         "keras",
