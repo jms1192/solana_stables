@@ -1,223 +1,253 @@
+from datetime import date, datetime
+
+import altair as alt
+import pandas as pd
 import streamlit as st
-import numpy as np
-from pandas import DataFrame
-from keybert import KeyBERT
-# For Flair (Keybert)
-from flair.embeddings import TransformerDocumentEmbeddings
-import seaborn as sns
-# For download buttons
-from functionforDownloadButtons import download_button
-import os
-import json
+from google.cloud import bigquery
+from google.oauth2.service_account import Credentials
 
-st.set_page_config(
-    page_title="BERT Keyword Extractor",
-    page_icon="🎈",
-)
+st.set_page_config(page_icon="📥", page_title="Download App")
 
 
-def _max_width_():
-    max_width_str = f"max-width: 1400px;"
-    st.markdown(
-        f"""
-    <style>
-    .reportview-container .main .block-container{{
-        {max_width_str}
-    }}
-    </style>    
-    """,
+def icon(emoji: str):
+    """Shows an emoji as a Notion-style page icon."""
+    st.write(
+        f'<span style="font-size: 78px; line-height: 1">{emoji}</span>',
         unsafe_allow_html=True,
     )
 
 
-_max_width_()
-
-c30, c31, c32 = st.columns([2.5, 1, 3])
-
-with c30:
-    # st.image("logo.png", width=400)
-    st.title("🔑 BERT Keyword Extractor")
-    st.header("")
-
+# Share the connector across all users connected to the app
+@st.experimental_singleton()
+def get_connector():
+    """Create a connector using credentials filled in Streamlit secrets"""
+    credentials = Credentials.from_service_account_info(st.secrets["bigquery"])
+    connector = bigquery.Client(credentials=credentials)
+    return connector
 
 
-with st.expander("ℹ️ - About this app", expanded=True):
+@st.experimental_memo(ttl=24 * 60 * 60)
+def get_data_frame_from_raw_sql(_connector, query: str) -> pd.DataFrame:
+    return _connector.query(query).to_dataframe()
 
-    st.write(
-        """     
--   The *BERT Keyword Extractor* app is an easy-to-use interface built in Streamlit for the amazing [KeyBERT](https://github.com/MaartenGr/KeyBERT) library from Maarten Grootendorst!
--   It uses a minimal keyword extraction technique that leverages multiple NLP embeddings and relies on [Transformers] (https://huggingface.co/transformers/) 🤗 to create keywords/keyphrases that are most similar to a document.
-	    """
+
+big_query_connector = get_connector()
+get_data_frame_from_raw_sql(big_query_connector, "SELECT 'foo'")
+
+
+def monthly_downloads(start_date):
+    df = get_data_frame_from_raw_sql(
+        big_query_connector,
+        f"""
+        SELECT
+            date_trunc(date, MONTH) as date,
+            project,
+            SUM(downloads) as downloads
+        FROM streamlit.streamlit.pypi_downloads
+        WHERE date >= '{start_date}'
+            AND project IN ('pandas', 'keras', 'torch', 'tensorflow', 'numpy', 'sci-kit learn')
+        GROUP BY 1,2
+        ORDER BY 1,2 ASC
+        """,
     )
 
-    st.markdown("")
+    # Percentage difference (between 0-1) of downloads of current vs previous month
+    df["delta"] = (df.groupby(["project"])["downloads"].pct_change()).fillna(0)
+    # BigQuery returns the date column as type dbdate, which is not supported by Altair/Vegalite
+    df["date"] = df["date"].astype("datetime64")
 
-st.markdown("")
-st.markdown("## **📌 Paste document **")
-with st.form(key="my_form"):
+    return df
 
 
-    ce, c1, ce, c2, c3 = st.columns([0.07, 1, 0.07, 5, 0.07])
-    with c1:
-        ModelType = st.radio(
-            "Choose your model",
-            ["DistilBERT (Default)", "Flair"],
-            help="At present, you can choose between 2 models (Flair or DistilBERT) to embed your text. More to come!",
-        )
+def weekly_downloads(start_date):
+    df = get_data_frame_from_raw_sql(
+        big_query_connector,
+        f"""
+        SELECT
+            date_trunc(date, WEEK) as date,
+            project,
+            SUM(downloads) as downloads
+        FROM streamlit.streamlit.pypi_downloads
+        WHERE date >= '{start_date}'
+            AND project IN ('pandas', 'keras', 'torch', 'tensorflow', 'numpy', 'sci-kit learn')
+        GROUP BY 1,2
+        ORDER BY 1,2 ASC
+        """,
+    )
+    # Percentage difference (between 0-1) of downloads of current vs previous month
+    df["delta"] = (df.groupby(["project"])["downloads"].pct_change()).fillna(0)
+    # BigQuery returns the date column as type dbdate, which is not supported by Altair/Vegalite
+    df["date"] = df["date"].astype("datetime64")
 
-        if ModelType == "Default (DistilBERT)":
-            # kw_model = KeyBERT(model=roberta)
+    return df
 
-            @st.cache(allow_output_mutation=True)
-            def load_model():
-                return KeyBERT(model=roberta)
 
-            kw_model = load_model()
+def plot_all_downloads(
+    source, x="date", y="downloads", group="project", axis_scale="linear"
+):
 
-        else:
-            @st.cache(allow_output_mutation=True)
-            def load_model():
-                return KeyBERT("distilbert-base-nli-mean-tokens")
+    if st.checkbox("View logarithmic scale"):
+        axis_scale = "log"
 
-            kw_model = load_model()
+    brush = alt.selection_interval(encodings=["x"], empty="all")
 
-        top_N = st.slider(
-            "# of results",
-            min_value=1,
-            max_value=30,
-            value=10,
-            help="You can choose the number of keywords/keyphrases to display. Between 1 and 30, default number is 10.",
-        )
-        min_Ngrams = st.number_input(
-            "Minimum Ngram",
-            min_value=1,
-            max_value=4,
-            help="""The minimum value for the ngram range.
-*Keyphrase_ngram_range* sets the length of the resulting keywords/keyphrases.
-To extract keyphrases, simply set *keyphrase_ngram_range* to (1, 2) or higher depending on the number of words you would like in the resulting keyphrases.""",
-            # help="Minimum value for the keyphrase_ngram_range. keyphrase_ngram_range sets the length of the resulting keywords/keyphrases. To extract keyphrases, simply set keyphrase_ngram_range to (1, # 2) or higher depending on the number of words you would like in the resulting keyphrases.",
-        )
+    click = alt.selection_multi(encodings=["color"])
 
-        max_Ngrams = st.number_input(
-            "Maximum Ngram",
-            value=2,
-            min_value=1,
-            max_value=4,
-            help="""The maximum value for the keyphrase_ngram_range.
-*Keyphrase_ngram_range* sets the length of the resulting keywords/keyphrases.
-To extract keyphrases, simply set *keyphrase_ngram_range* to (1, 2) or higher depending on the number of words you would like in the resulting keyphrases.""",
-        )
-
-        StopWordsCheckbox = st.checkbox(
-            "Remove stop words",
-            help="Tick this box to remove stop words from the document (currently English only)",
-        )
-
-        use_MMR = st.checkbox(
-            "Use MMR",
-            value=True,
-            help="You can use Maximal Margin Relevance (MMR) to diversify the results. It creates keywords/keyphrases based on cosine similarity. Try high/low 'Diversity' settings below for interesting variations.",
-        )
-
-        Diversity = st.slider(
-            "Keyword diversity (MMR only)",
-            value=0.5,
-            min_value=0.0,
-            max_value=1.0,
-            step=0.1,
-            help="""The higher the setting, the more diverse the keywords.
-            
-Note that the *Keyword diversity* slider only works if the *MMR* checkbox is ticked.
-""",
-        )
-
-    with c2:
-        doc = st.text_area(
-            "Paste your text below (max 500 words)",
-            height=510,
-        )
-
-        MAX_WORDS = 500
-        import re
-        res = len(re.findall(r"\w+", doc))
-        if res > MAX_WORDS:
-            st.warning(
-                "⚠️ Your text contains "
-                + str(res)
-                + " words."
-                + " Only the first 500 words will be reviewed. Stay tuned as increased allowance is coming! 😊"
+    lines = (
+        (
+            alt.Chart(source)
+            .mark_line(point=True)
+            .encode(
+                x=x,
+                y=alt.Y("downloads", scale=alt.Scale(type=f"{axis_scale}")),
+                color=group,
+                tooltip=[
+                    "date",
+                    "project",
+                    "downloads",
+                    alt.Tooltip("delta", format=".2%"),
+                ],
             )
+        )
+        .add_selection(brush)
+        .properties(width=550)
+        .transform_filter(click)
+    )
 
-            doc = doc[:MAX_WORDS]
+    bars = (
+        alt.Chart(source)
+        .mark_bar()
+        .encode(
+            y=group,
+            color=group,
+            x=alt.X("downloads:Q", scale=alt.Scale(type=f"{axis_scale}")),
+            tooltip=["date", "downloads", alt.Tooltip("delta", format=".2%")],
+        )
+        .transform_filter(brush)
+        .properties(width=550)
+        .add_selection(click)
+    )
 
-        submit_button = st.form_submit_button(label="✨ Get me the data!")
+    return lines & bars
 
-    if use_MMR:
-        mmr = True
+
+def pandasamlit_downloads(source, x="date", y="downloads"):
+    # Create a selection that chooses the nearest point & selects based on x-value
+    hover = alt.selection_single(
+        fields=[x],
+        nearest=True,
+        on="mouseover",
+        empty="none",
+    )
+
+    lines = (
+        alt.Chart(source)
+        .mark_line(point="transparent")
+        .encode(x=x, y=y)
+        .transform_calculate(color='datum.delta < 0 ? "red" : "green"')
+    )
+
+    # Draw points on the line, highlight based on selection, color based on delta
+    points = (
+        lines.transform_filter(hover)
+        .mark_circle(size=65)
+        .encode(color=alt.Color("color:N", scale=None))
+    )
+
+    # Draw an invisible rule at the location of the selection
+    tooltips = (
+        alt.Chart(source)
+        .mark_rule(opacity=0)
+        .encode(
+            x=x,
+            y=y,
+            tooltip=[x, y, alt.Tooltip("delta", format=".2%")],
+        )
+        .add_selection(hover)
+    )
+
+    return (lines + points + tooltips).interactive()
+
+
+def main():
+
+    # Note that page title/favicon are set in the __main__ clause below,
+    # so they can also be set through the mega multipage app (see ../pandas_app.py).
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        start_date = st.date_input(
+            "Select start date",
+            date(2020, 1, 1),
+            min_value=datetime.strptime("2020-01-01", "%Y-%m-%d"),
+            max_value=datetime.now(),
+        )
+
+    with col2:
+        time_frame = st.selectbox(
+            "Select weekly or monthly downloads", ("weekly", "monthly")
+        )
+
+    # PREPARING DATA FOR WEEKLY AND MONTHLY
+
+    df_monthly = monthly_downloads(start_date)
+    df_weekly = weekly_downloads(start_date)
+
+    pandas_data_monthly = df_monthly[df_monthly["project"] == "pandas"]
+    pandas_data_weekly = df_weekly[df_weekly["project"] == "pandas"]
+
+    package_names = df_monthly["project"].unique()
+
+    if time_frame == "weekly":
+        selected_data_streamlit = pandas_data_weekly
+        selected_data_all = df_weekly
     else:
-        mmr = False
+        selected_data_streamlit = pandas_data_monthly
+        selected_data_all = df_monthly
 
-    if StopWordsCheckbox:
-        StopWords = "english"
-    else:
-        StopWords = None
+    ## PANDAS DOWNLOADS
 
-if not submit_button:
-    st.stop()
+    st.header("Pandas downloads")
 
-if min_Ngrams > max_Ngrams:
-    st.warning("min_Ngrams can't be greater than max_Ngrams")
-    st.stop()
+    st.altair_chart(
+        pandasamlit_downloads(selected_data_streamlit), use_container_width=True
+    )
 
-keywords = kw_model.extract_keywords(
-    doc,
-    keyphrase_ngram_range=(min_Ngrams, max_Ngrams),
-    use_mmr=mmr,
-    stop_words=StopWords,
-    top_n=top_N,
-    diversity=Diversity,
+    # OTHER DOWNLOADS
+
+    st.header("Compare other package downloads")
+
+    instructions = """
+    Click and drag line chart to select and pan date interval\n
+    Hover over bar chart to view downloads\n
+    Click on a bar to highlight that package
+    """
+    select_packages = st.multiselect(
+        "Select Python packages to compare",
+        package_names,
+        default=[
+            "pandas",
+            "keras",
+        ],
+        help=instructions,
+    )
+
+    select_packages_df = pd.DataFrame(select_packages).rename(columns={0: "project"})
+
+    if not select_packages:
+        st.stop()
+
+    filtered_df = selected_data_all[
+        selected_data_all["project"].isin(select_packages_df["project"])
+    ]
+
+    st.altair_chart(plot_all_downloads(filtered_df), use_container_width=True)
+
+
+st.title("Downloads")
+st.write(
+    "Metrics on how often Pandas is being downloaded from PyPI (Python's main "
+    "package repository, i.e. where `pip install pandas` downloads the package from)."
 )
-
-st.markdown("## **🎈 Check & download results **")
-
-st.header("")
-
-cs, c1, c2, c3, cLast = st.columns([2, 1.5, 1.5, 1.5, 2])
-
-with c1:
-    CSVButton2 = download_button(keywords, "Data.csv", "📥 Download (.csv)")
-with c2:
-    CSVButton2 = download_button(keywords, "Data.txt", "📥 Download (.txt)")
-with c3:
-    CSVButton2 = download_button(keywords, "Data.json", "📥 Download (.json)")
-
-st.header("")
-
-df = (
-    DataFrame(keywords, columns=["Keyword/Keyphrase", "Relevancy"])
-    .sort_values(by="Relevancy", ascending=False)
-    .reset_index(drop=True)
-)
-
-df.index += 1
-
-# Add styling
-cmGreen = sns.light_palette("green", as_cmap=True)
-cmRed = sns.light_palette("red", as_cmap=True)
-df = df.style.background_gradient(
-    cmap=cmGreen,
-    subset=[
-        "Relevancy",
-    ],
-)
-
-c1, c2, c3 = st.columns([1, 3, 1])
-
-format_dictionary = {
-    "Relevancy": "{:.1%}",
-}
-
-df = df.format(format_dictionary)
-
-with c2:
-    st.table(df)
+main()
