@@ -161,7 +161,7 @@ symbols3 = st.selectbox("Choose asset to visualize", big_category)
 
 df = [x for x in data if x['BIG_CATEGORY'] == symbols3]
 if len(df) > 10:
-    df.sort(desc)
+    df.sort(reverse=True)
     df = df[0:10]
 
 fig = px.pie(df, values='VALUE', names='SMALL_CATEGORY')
