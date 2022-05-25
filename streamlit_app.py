@@ -118,7 +118,7 @@ create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2
 
 """    
 
-alt.Chart(source).mark_bar().encode(
-    (1,2,3,4),
-    (2,3,2,2),
-)
+df = [1,23,4,5,6,7]
+fig = px.pie(df)
+st.plotly_chart(fig, use_container_width=True)
+             
