@@ -109,3 +109,7 @@ create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2
 
 """    
 
+alt.Chart(source).mark_bar().encode(
+    (1,2,3,4),
+    (2,3,2,2),
+)
