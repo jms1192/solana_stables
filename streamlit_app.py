@@ -63,7 +63,7 @@ def create_premade_layout(layout, data_link):
         )
 
         ## place data frame 
-        st.area_chart(chart)
+        st.line_chart(chart)
         st.bar_chart(chart2)
 
 
