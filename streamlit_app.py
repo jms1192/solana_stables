@@ -7,7 +7,7 @@ import numpy as np
 import requests
 
 
-def create_premade_layout(layout, data_link):
+def create_premade_layout(layout, data_link, type = ''):
 
     data = requests.get(data_link).json()
 
@@ -63,7 +63,13 @@ def create_premade_layout(layout, data_link):
         )
 
         ## place data frame 
-        st.line_chart(chart)
+        if type like 'line':
+            st.line_chart(chart)
+        elif type like 'bar':
+            st.bar_chart(chart)
+        elif type like 'area'
+            st.area_chart(chart)
+            
         st.bar_chart(chart2)
 
 
@@ -99,7 +105,7 @@ create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2
 
 - The YLDLY token's swap volume has been declining over the past 30 days.
 """
-create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/1cbd998e-fe68-4992-bd31-5c204fdf426a/data/latest')
+create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/1cbd998e-fe68-4992-bd31-5c204fdf426a/data/latest', line)
     
 """
 ## Conclusion
