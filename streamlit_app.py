@@ -135,7 +135,7 @@ data = [{'SMALL_CATEGORY':'lol', 'BIG_CATEGORY':1, 'VALUE':32},
 symbols = [x['BIG_CATEGORY'] for x in data]
 big_category = []
 for i in symbols:
-    if i not in all_symbols:
+    if i not in big_category:
         big_category.append(i)
 
 
