@@ -118,8 +118,7 @@ create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2
 
 """    
 
-import plotly.express as px
-# This dataframe has 244 lines, but 4 distinct values for `day`
+
 df = px.data.tips()
 fig = px.pie(df, values='tip', names='day')
 st.plotly_chart(fig, use_container_width=True)
