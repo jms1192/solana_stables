@@ -156,6 +156,10 @@ for i in symbols:
 symbols3 = st.selectbox("Choose asset to visualize", big_category)
 
 df = [x for x in data if x['BIG_CATEGORY'] == symbols3]
+if len(df) > 10 then:
+    df.sort(desc)
+    df = df[0:10]
+
 fig = px.pie(df, values='VALUE', names='SMALL_CATEGORY')
 st.plotly_chart(fig, use_container_width=True)
              
