@@ -123,3 +123,7 @@ df = px.data.tips()
 fig = px.pie(df, values='tip', names='day')
 st.plotly_chart(fig, use_container_width=True)
              
+   
+symbols3 = st.selectbox("Choose asset to visualize", all_symbols, all_symbols[:9])
+    
+    
