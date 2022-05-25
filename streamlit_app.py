@@ -108,21 +108,5 @@ create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2
 - There were 2 days in the past month where the YLDLY token swap Volume was over 120 Million tokens.
 
 """    
-  
-    
-instructions = """
-    Click and drag line chart to select and pan date interval\n
-    Hover over bar chart to view downloads\n
-    Click on a bar to highlight that package
-    """
-select_packages = st.multiselect(
-    "Select Python packages to compare",
-    ["pandas", "keras", "dasasd"],
-    default=[
-        "pandas",
-        "keras",
-    ],
-    help=instructions,
-)
-select_packages_df = pd.DataFrame(select_packages).rename(columns={0: "project"})
-
+create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/1cbd998e-fe68-4992-bd31-5c204fdf426a/data/latest')
+   
