@@ -107,7 +107,7 @@ create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2
 
 - The YLDLY token's swap volume has been declining over the past 30 days.
 """
-create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/1cbd998e-fe68-4992-bd31-5c204fdf426a/data/latest', line)
+create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/1cbd998e-fe68-4992-bd31-5c204fdf426a/data/latest', 'line')
     
 """
 ## Conclusion
