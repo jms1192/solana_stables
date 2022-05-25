@@ -63,11 +63,13 @@ def create_premade_layout(layout, data_link, type = ''):
         )
 
         ## place data frame 
-        if type like 'line':
+        if type == 'line':
             st.line_chart(chart)
-        elif type like 'bar':
+        elif type == 'bar':
             st.bar_chart(chart)
-        elif type like 'area'
+        elif type == 'area':
+            st.area_chart(chart)
+        else:
             st.area_chart(chart)
             
         st.bar_chart(chart2)
