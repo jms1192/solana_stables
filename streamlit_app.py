@@ -108,5 +108,4 @@ create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2
 - There were 2 days in the past month where the YLDLY token swap Volume was over 120 Million tokens.
 
 """    
-create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/1cbd998e-fe68-4992-bd31-5c204fdf426a/data/latest')
-   
+
