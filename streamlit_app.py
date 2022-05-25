@@ -74,11 +74,25 @@ def create_premade_layout(layout, data_link, type = ''):
             st.area_chart(chart)
             
         st.bar_chart(chart2)
+        
+    elif layout == 'pie-layout-1':
+        ### data needs to made like {BIG_CATEGORY, SMALL_CATEGORY, VALUE}
+        symbols = [x['BIG_CATEGORY'] for x in data]
+        big_category = []
+        for i in symbols:
+            if i not in big_category:
+                big_category.append(i)
+                
+        symbols3 = st.selectbox("Choose asset to visualize", big_category)
+
+        df = [x for x in data if x['BIG_CATEGORY'] == symbols3]
+        fig = px.pie(df, values='VALUE', names='SMALL_CATEGORY')
+        st.plotly_chart(fig, use_container_width=True)
 
 
 """
 # Swapping for YLDLY on DEXs
-
+    
 Is swapping for YLDY more popular on some DEXs than others? 
 
 What assets are users swapping for YLDLY?
@@ -148,4 +162,4 @@ st.plotly_chart(fig, use_container_width=True)
    
 
     
-    
+create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/06257891-018c-4aee-b7ad-284652ff4f68/data/latest')
