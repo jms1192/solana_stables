@@ -119,11 +119,35 @@ create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2
 """    
 
 
+
+data = [{'SMALL_CATEGORY':'lol', 'BIG_CATEGORY':1, 'VALUE':32},
+        {'SMALL_CATEGORY':'lol1', 'BIG_CATEGORY':1, 'VALUE':32},
+        {'SMALL_CATEGORY':'lol2', 'BIG_CATEGORY':1, 'VALUE':32},
+        {'SMALL_CATEGORY':'lol3', 'BIG_CATEGORY':1, 'VALUE':32},
+        {'SMALL_CATEGORY':'lol4', 'BIG_CATEGORY':1, 'VALUE':32},
+        {'SMALL_CATEGORY':'lol', 'BIG_CATEGORY':2, 'VALUE':39},
+        {'SMALL_CATEGORY':'lol1', 'BIG_CATEGORY':2, 'VALUE':3},
+        {'SMALL_CATEGORY':'lol2', 'BIG_CATEGORY':2, 'VALUE':32},
+        {'SMALL_CATEGORY':'lol3', 'BIG_CATEGORY':2, 'VALUE':22},
+        {'SMALL_CATEGORY':'lol4', 'BIG_CATEGORY':2, 'VALUE':3}
+       ]
+## get symbols 
+symbols = [x['BIG_CATEGORY'] for x in data]
+big_category = []
+for i in symbols:
+    if i not in all_symbols:
+        big_category.append(i)
+
+
+symbols3 = st.selectbox("Choose asset to visualize", big_category)
+
+
+
 df = px.data.tips()
 fig = px.pie(df, values='tip', names='day')
 st.plotly_chart(fig, use_container_width=True)
              
    
-symbols3 = st.selectbox("Choose asset to visualize", (1,2,3,4) )
+
     
     
