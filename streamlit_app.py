@@ -6,6 +6,67 @@ import streamlit as st
 import numpy as np
 import requests
 
+
+def create_premade_layout(layout, data_link):
+
+    data = requests.get(data_link).json()
+
+    if layout == '2d-layout-1':
+
+        ## get symbols 
+        symbols = [x['ASSET'] for x in data]
+        all_symbols = []
+        for i in symbols:
+            if i not in all_symbols:
+                all_symbols.append(i)
+
+        ## drop text box 
+        symbols = st.multiselect("Choose asset to visualize", all_symbols, all_symbols[:9])
+        st.text("")
+
+        ## sort data 
+        vol_data = {}
+        vol_data_sum = {}
+        date_data = []
+        vol = []
+        asset = ''
+        for x in data:
+            if x['ASSET'] in symbols:
+                if not x['ASSET'] == asset:
+                    if asset == '':
+                        asset = x['ASSET']
+                    else:
+                        vol_data_sum[asset] = sum(vol)
+                        vol_data[asset] = vol
+                        asset = x['ASSET']
+                        
+                    vol = []
+                    vol.append(x['SWAP_VOLUME'])
+                    date_data = []
+                    date_data.append(x['DAY'])
+                else:
+                    date_data.append(x['DAY'])
+                    vol.append(x['SWAP_VOLUME'])
+
+        vol_data[asset] = vol           
+        symbols.sort()
+
+        ## create data frames
+        chart = pd.DataFrame(
+            vol_data,
+            index=date_data
+        )
+
+        chart2 = pd.DataFrame(
+            [sum(vol_data[x]) for x in vol_data],
+            index=[x for x in vol_data]
+        )
+
+        ## place data frame 
+        st.bar_chart(chart)
+        st.bar_chart(chart2)
+
+
 """
 # Swapping for YLDLY on DEXs
 
@@ -29,63 +90,8 @@ Yieldly is a DeFi staking protocol built for Algorand, that allows holders of Al
 
 """
 
-##with st.echo(code_location='below'):
-    
-  
-### pick symbols
-data = requests.get('https://node-api.flipsidecrypto.com/api/v2/queries/5c5ecaee-e9da-4ff6-b62d-651711f9d324/data/latest').json()
-symbols = [x['ASSET'] for x in data]
-all_symbols = []
-for i in symbols:
-    if i not in all_symbols:
-        all_symbols.append(i)
-    
-symbols = st.multiselect("Choose asset to visualize", all_symbols, all_symbols[:9])
-st.text("")
-    
-### Sort Data  
-vol_data = {}
-vol_data_sum = {}
-date_data = []
-vol = []
-asset = ''
-for x in data:
-    if x['ASSET'] in symbols:
-        if not x['ASSET'] == asset:
-            if asset == '':
-                asset = x['ASSET']
-            else:
-                vol_data_sum[asset] = sum(vol)
-                vol_data[asset] = vol
-                asset = x['ASSET']
-                  
-            vol = []
-            vol.append(x['SWAP_VOLUME'])
-            date_data = []
-            date_data.append(x['DAY'])
-        else:
-            date_data.append(x['DAY'])
-            vol.append(x['SWAP_VOLUME'])
-            
-vol_data[asset] = vol           
-                
-symbols.sort()
-### Display Bar chart
-    
-chart = pd.DataFrame(
-    vol_data,
-    index=date_data
-)
-   
-### Pie chart 
-        
-chart2 = pd.DataFrame(
-    [sum(vol_data[x]) for x in vol_data],
-    index=[x for x in vol_data]
-)
-   
-st.bar_chart(chart)
-st.bar_chart(chart2)
+create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/5c5ecaee-e9da-4ff6-b62d-651711f9d324/data/latest')
+
 """
 ### Observations 
 
@@ -93,60 +99,7 @@ st.bar_chart(chart2)
 
 - The YLDLY token's swap volume has been declining over the past 30 days.
 """
-
-data = requests.get('https://node-api.flipsidecrypto.com/api/v2/queries/1cbd998e-fe68-4992-bd31-5c204fdf426a/data/latest').json()
-symbols = [x['ASSET'] for x in data]
-all_symbols = []
-for i in symbols:
-    if i not in all_symbols:
-        all_symbols.append(i)
-    
-symbols = st.multiselect("Choose DEX to visualize", all_symbols, all_symbols[:9])
-st.text("")
-    
-### Sort Data  
-vol_data = {}
-vol_data_sum = {}
-date_data = []
-vol = []
-asset = ''
-for x in data:
-    if x['ASSET'] in symbols:
-        if not x['ASSET'] == asset:
-            if asset == '':
-                asset = x['ASSET']
-            else:
-                vol_data_sum[asset] = sum(vol)
-                vol_data[asset] = vol
-                asset = x['ASSET']
-                  
-            vol = []
-            vol.append(x['SWAP_VOLUME'])
-            date_data = []
-            date_data.append(x['DAY'])
-        else:
-            date_data.append(x['DAY'])
-            vol.append(x['SWAP_VOLUME'])
-            
-vol_data[asset] = vol           
-                
-symbols.sort()
-### Display Bar chart
-    
-chart = pd.DataFrame(
-    vol_data,
-    index=date_data
-)
-   
-### Pie chart 
-        
-chart2 = pd.DataFrame(
-    [sum(vol_data[x]) for x in vol_data],
-    index=[x for x in vol_data]
-)
-   
-st.bar_chart(chart)
-st.bar_chart(chart2)
+create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/1cbd998e-fe68-4992-bd31-5c204fdf426a/data/latest')
     
 """
 ## Conclusion
