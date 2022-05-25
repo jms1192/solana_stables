@@ -156,7 +156,7 @@ for i in symbols:
 symbols3 = st.selectbox("Choose asset to visualize", big_category)
 
 df = [x for x in data if x['BIG_CATEGORY'] == symbols3]
-if len(df) > 10 then:
+if len(df) > 10:
     df.sort(desc)
     df = df[0:10]
 
