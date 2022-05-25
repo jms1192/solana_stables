@@ -11,4 +11,5 @@ db-dtypes
 google-auth
 google-cloud-storage
 google-cloud
+plotly
 
