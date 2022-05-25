@@ -87,7 +87,7 @@ def create_premade_layout(layout, data_link, type = ''):
 
         df = [x for x in data if x['BIG_CATEGORY'] == symbols3]
         if len(df) > 10:
-            df.sort(reverse=True)
+            df.sort()
             df = df[0:10]
         
         fig = px.pie(df, values='VALUE', names='SMALL_CATEGORY')
