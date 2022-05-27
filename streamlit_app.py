@@ -111,6 +111,8 @@ Thorchain, which is built on the Cosmos blockchain, is a decentralized liquidity
 
 ## Thorchain LP Metrics 
 
+The graphs below show the weekly and total number of liquidity actions on Thorchain broken up by action type. In 2022 providing Rune-only to pools was the most popular way to provide liquidity. At the end of March there was a spike in asset-only Lp actions and symmetric LP actions.   
+
 """
 
 create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/57d05aaf-2994-4ad7-b310-005a6ad92c1f/data/latest')
