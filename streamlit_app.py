@@ -83,7 +83,7 @@ def create_premade_layout(layout, data_link, type = ''):
             if i not in big_category:
                 big_category.append(i)
                 
-        symbols3 = st.selectbox("Choose asset to visualize", big_category)
+        symbols3 = st.selectbox("", big_category)
 
         df = [x for x in data if x['BIG_CATEGORY'] == symbols3]
         if len(df) > 10:
