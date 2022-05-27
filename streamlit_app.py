@@ -117,7 +117,7 @@ Yieldly is a DeFi staking protocol built for Algorand, that allows holders of Al
 
 """
 
-create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/5c5ecaee-e9da-4ff6-b62d-651711f9d324/data/latest')
+create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/57d05aaf-2994-4ad7-b310-005a6ad92c1f/data/latest')
 
 """
 ### Observations 
@@ -126,7 +126,7 @@ create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2
 
 - The YLDLY token's swap volume has been declining over the past 30 days.
 """
-create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/1cbd998e-fe68-4992-bd31-5c204fdf426a/data/latest', 'line')
+create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/513968aa-82a9-4448-b670-9466a13e6dd1/data/latest')
     
 """
 ## Conclusion
@@ -136,39 +136,5 @@ create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2
 
 """    
 
-
-
-data = [{'SMALL_CATEGORY':'lol', 'BIG_CATEGORY':1, 'VALUE':32},
-        {'SMALL_CATEGORY':'lol1', 'BIG_CATEGORY':1, 'VALUE':32},
-        {'SMALL_CATEGORY':'lol2', 'BIG_CATEGORY':1, 'VALUE':32},
-        {'SMALL_CATEGORY':'lol3', 'BIG_CATEGORY':1, 'VALUE':32},
-        {'SMALL_CATEGORY':'lol4', 'BIG_CATEGORY':1, 'VALUE':32},
-        {'SMALL_CATEGORY':'lol', 'BIG_CATEGORY':2, 'VALUE':39},
-        {'SMALL_CATEGORY':'lol1', 'BIG_CATEGORY':2, 'VALUE':3},
-        {'SMALL_CATEGORY':'lol2', 'BIG_CATEGORY':2, 'VALUE':32},
-        {'SMALL_CATEGORY':'lol3', 'BIG_CATEGORY':2, 'VALUE':22},
-        {'SMALL_CATEGORY':'lol4', 'BIG_CATEGORY':2, 'VALUE':3}
-       ]
-## get symbols 
-symbols = [x['BIG_CATEGORY'] for x in data]
-big_category = []
-for i in symbols:
-    if i not in big_category:
-        big_category.append(i)
-
-
-symbols3 = st.selectbox("Choose asset to visualize", big_category)
-
-df = [x for x in data if x['BIG_CATEGORY'] == symbols3]
-if len(df) > 10:
-    df.sort(reverse=True)
-    df = df[0:10]
-
-fig = px.pie(df, values='VALUE', names='SMALL_CATEGORY')
-st.plotly_chart(fig, use_container_width=True)
-             
+ 
    
-
-    
-create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/57d05aaf-2994-4ad7-b310-005a6ad92c1f/data/latest')
-create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/513968aa-82a9-4448-b670-9466a13e6dd1/data/latest')
