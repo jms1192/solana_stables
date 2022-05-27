@@ -170,4 +170,4 @@ st.plotly_chart(fig, use_container_width=True)
    
 
     
-create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/06257891-018c-4aee-b7ad-284652ff4f68/data/latest')
+create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/57d05aaf-2994-4ad7-b310-005a6ad92c1f/data/latest')
