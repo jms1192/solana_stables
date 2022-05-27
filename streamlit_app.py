@@ -123,9 +123,10 @@ create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v
     
 """
 ## Conclusion
-- Out of the 50 - 100 million YLDLY tokens swapped daily only between 1 and 3 million of them are swapped on DEXs other than Tinyman.
 
-- There were 2 days in the past month where the YLDLY token swap Volume was over 120 Million tokens.
+- In 2022 providing Rune-only liquidity has been the most popular way to provide liquidity on The Chain and asset-only liquidity seems to be the least popular way to provide liquidity.   
+
+- People providing liquidity to in rune-only and asset-only liquidity pools seem to provide liquidity in very different ways. Most of the volume coming in rune-only are going to the BTC.BTC and the ETH.ETH pool and the assets only liquidity is coming in to the stablecoin pools TERRA.UST and BNB.BUSD. 
 
 """    
 
