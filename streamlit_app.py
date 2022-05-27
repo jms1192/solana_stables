@@ -103,11 +103,9 @@ On THORChain, you are allowed to add liquidity in 1 of 3 ways: Rune-only, asset-
 
 Yieldly is a DeFi staking protocol built for Algorand, that allows holders of Algo to stake their assets and have the chance to earn a disproportionate reward. The native token of the Yieldly ecosystem is YLDLY.
 
-### Methodology
+### What is Thorchain? 
 
-- We will look at the YLDLY token swap volume in terms of swap to asset and DEX. 
-
-- We are looking to see where and what assets people are swapping with YLDlY in the passt 30 days.
+Thorchain, which is built on the Cosmos blockchain, is a decentralized liquidity protocol that specializes in cross-chain connectivity, allowing traders to swap tokens between different networks. The native token of the Thorchain blockchian is RUNE.
 
 ## YLDLY token swap metrics 
 
