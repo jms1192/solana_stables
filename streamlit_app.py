@@ -96,10 +96,6 @@ def create_premade_layout(layout, data_link, type = ''):
 
 """
 # Symmetric vs Asymmetric LPs
-    
-On THORChain, you are allowed to add liquidity in 1 of 3 ways: Rune-only, asset-only, or symmetric (both Rune + asset). What is the breakdown of liquidity being added, according to those categories? Are there any trends over time or by pool?
-
-### What is YLDLY?
 
 Yieldly is a DeFi staking protocol built for Algorand, that allows holders of Algo to stake their assets and have the chance to earn a disproportionate reward. The native token of the Yieldly ecosystem is YLDLY.
 
@@ -107,7 +103,11 @@ Yieldly is a DeFi staking protocol built for Algorand, that allows holders of Al
 
 Thorchain, which is built on the Cosmos blockchain, is a decentralized liquidity protocol that specializes in cross-chain connectivity, allowing traders to swap tokens between different networks. The native token of the Thorchain blockchian is RUNE.
 
-## YLDLY token swap metrics 
+## Methodology
+
+- We are going to look at the total add liquidity events on Thorchain broken down by event type and liquidity pool.
+
+- We are looking to see the how thorchain users are providing liquidity. 
 
 """
 
