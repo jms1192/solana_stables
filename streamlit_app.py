@@ -97,13 +97,12 @@ def create_premade_layout(layout, data_link, type = ''):
 """
 # Symmetric vs Asymmetric LPs
 
-Yieldly is a DeFi staking protocol built for Algorand, that allows holders of Algo to stake their assets and have the chance to earn a disproportionate reward. The native token of the Yieldly ecosystem is YLDLY.
-
+On THORChain, you are allowed to add liquidity in 1 of 3 ways: Rune-only, asset-only, or symmetric (both Rune + asset). What is the breakdown of liquidity being added, according to those categories? Are there any trends over time or by pool?
 ### What is Thorchain? 
 
 Thorchain, which is built on the Cosmos blockchain, is a decentralized liquidity protocol that specializes in cross-chain connectivity, allowing traders to swap tokens between different networks. The native token of the Thorchain blockchian is RUNE.
 
-## Methodology
+### Methodology
 
 - We are going to look at the total add liquidity events on Thorchain broken down by event type and liquidity pool.
 
@@ -111,18 +110,14 @@ Thorchain, which is built on the Cosmos blockchain, is a decentralized liquidity
 
 ## Thorchain LP Metrics 
 
-The graphs below show the weekly and total number of liquidity actions on Thorchain broken up by action type. In 2022 providing Rune-only to pools was the most popular way to provide liquidity. At the end of March there was a spike in asset-only Lp actions and symmetric LP actions.   
+The graphs below show the weekly and total number of liquidity actions on Thorchain broken up by action type. In 2022 providing Rune-only to pools was the most popular way to provide liquidity. At the end of March there was a spike in asset-only LP actions and symmetric LP actions.   
 
 """
 
 create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/57d05aaf-2994-4ad7-b310-005a6ad92c1f/data/latest')
 
 """
-### Observations 
-
-- The vast majority of all YLDLY swap volume was with the ALGO token.
-
-- The YLDLY token's swap volume has been declining over the past 30 days.
+The figure below shows the LP volume breakdown by pool of the diffrent Thorchain liquidity actions. Nearly half of all Rune-only LP action volume have gone into the BTC.BTC and ETH.ETH pool, while nealy half of all asset-only deposits have gone into the TERRA.UST and the BNB.BUSD pool.  
 """
 create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/513968aa-82a9-4448-b670-9466a13e6dd1/data/latest')
     
