@@ -95,13 +95,9 @@ def create_premade_layout(layout, data_link, type = ''):
 
 
 """
-# Swapping for YLDLY on DEXs
+# Symmetric vs Asymmetric LPs
     
-Is swapping for YLDY more popular on some DEXs than others? 
-
-What assets are users swapping for YLDLY?
-
-Are there any standout days of swap volume for Yieldly?
+On THORChain, you are allowed to add liquidity in 1 of 3 ways: Rune-only, asset-only, or symmetric (both Rune + asset). What is the breakdown of liquidity being added, according to those categories? Are there any trends over time or by pool?
 
 ### What is YLDLY?
 
