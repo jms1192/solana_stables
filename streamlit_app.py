@@ -22,7 +22,7 @@ def create_premade_layout(layout, data_link, type = ''):
                 all_symbols.append(i)
 
         ## drop text box 
-        symbols = st.multiselect("Choose asset to visualize", all_symbols, all_symbols[:9])
+        symbols = st.multiselect("", all_symbols, all_symbols[:9])
         st.text("")
 
         ## sort data 
@@ -107,7 +107,9 @@ Thorchain, which is built on the Cosmos blockchain, is a decentralized liquidity
 
 - We are going to look at the total add liquidity events on Thorchain broken down by event type and liquidity pool.
 
-- We are looking to see the how thorchain users are providing liquidity. 
+- We are looking to see how Thorchain users have been providing liquidity in 2022. 
+
+## Thorchain LP Metrics 
 
 """
 
