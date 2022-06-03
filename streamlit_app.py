@@ -120,7 +120,7 @@ create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2
 """
 The figure below shows the LP volume breakdown by pool of the diffrent Thorchain liquidity actions. Nearly half of all Rune-only LP action volume have gone into the BTC.BTC and ETH.ETH pool, while nealy half of all asset-only deposits have gone into the TERRA.UST and the BNB.BUSD pool.  
 """
-create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/513968aa-82a9-4448-b670-9466a13e6dd1/data/latest')
+create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/1af3facf-735b-4a48-9818-f7cda8e49000/data/latest')
     
 """
 ## Conclusion
