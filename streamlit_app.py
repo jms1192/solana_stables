@@ -105,9 +105,9 @@ SushiSwap is a decentralized cryptocurrency exchange and automated market maker 
 
 ### Methodology
 
-- We are going to look at the total add liquidity events on Thorchain broken down by event type and liquidity pool.
+- We will look at the metrics of stablecoins USDC, USDT, DAI, and FAX on both Uniswap and Sushiswap  
 
-- We are looking to see how Thorchain users have been providing liquidity in 2022. 
+- We are looking to what has the stablecoin landscape has been on Ethereum DEXs in 2022. 
 
 ## Thorchain LP Metrics 
 
@@ -115,7 +115,7 @@ The graphs below show the weekly and total number of liquidity actions on Thorch
 
 """
 
-create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/57d05aaf-2994-4ad7-b310-005a6ad92c1f/data/latest')
+create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/2ed8a2cc-6bf5-46db-8e8d-d10d234bc5c8/data/latest')
 
 """
 The figure below shows the LP volume breakdown by pool of the diffrent Thorchain liquidity actions. Nearly half of all Rune-only LP action volume have gone into the BTC.BTC and ETH.ETH pool, while nealy half of all asset-only deposits have gone into the TERRA.UST and the BNB.BUSD pool.  
