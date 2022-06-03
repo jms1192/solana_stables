@@ -120,17 +120,15 @@ create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2
 
 """
 The two graphs below show ETH stablecoin swap volumes broken up by DEX. overall  the DEX with the most consistent stablecoin volume was uniswap v3. Curve occasionally had large bursts of very high stablecoin swap volumes. 
-
+ 
+#### Weekly Ethereum DEX Swap Volume by Stablecoin
 """
 create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/1af3facf-735b-4a48-9818-f7cda8e49000/data/latest', 'bar')
     
 """
-## Conclusion
+The graph below shows the breakdown of stablecoins by swap volume on Sushiswap, Uniswap, and Curve. The volume of DAI on SushiSwap is a much larger percent of the swap volume than any other DEX and is the only dex to not have swap volume dominated by USDC and USDT. 
 
-- In 2022 providing Rune-only liquidity has been the most popular way to provide liquidity on The Chain and asset-only liquidity seems to be the least popular way to provide liquidity.   
-
-- People providing liquidity to in rune-only and asset-only liquidity pools seem to provide liquidity in very different ways. Most of the volume coming in rune-only are going to the BTC.BTC and the ETH.ETH pool and the assets only liquidity is coming in to the stablecoin pools TERRA.UST and BNB.BUSD. 
-
+#### Stablecoin Swap Volume by DEX 
 """    
 
 create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/ddbccbf5-0560-4f67-943f-246ee7864873/data/latest')
