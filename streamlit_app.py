@@ -136,11 +136,14 @@ create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v
 """
 # Conclusion 
 
--
+- USDC and USDT are the two Stablecoins with the most volume on Ethereum DEXs 
 
--
+- Uniswap-v3 makes up the majority of stablecoin swaps in 2022 
 
--
+- In early and mid May there was a massive spike in stablecoin volume on Curve 
+
+- Sushiswap is the only major Ethereum DEX to have DIA being in the top 2 of stablecoin volume. 
+
 
 """   
   
