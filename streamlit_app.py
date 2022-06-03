@@ -111,7 +111,7 @@ SushiSwap is a decentralized cryptocurrency exchange and automated market maker 
 
 ## Stablecoin Swap Metrics 
 
-the graphs below show the swap volume of  
+The 2 graphs below show the swap volume of DAI, USDC, USDT, FRAX, and UST on Curve, Uniswap, and Sushiswap since the start of 2022. Most weeks there has been between 3 and 8 Billion of stablecoin swap volume with most of the volume coming from USDC and USDT. Out of the algorithmic stablecoins in this chart DAI has had the largest swap volume on these DEXs. 
 """
 
 create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/2ed8a2cc-6bf5-46db-8e8d-d10d234bc5c8/data/latest', 'bar')
@@ -119,7 +119,7 @@ create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2
 """
 The figure below shows the LP volume breakdown by pool of the diffrent Thorchain liquidity actions. Nearly half of all Rune-only LP action volume have gone into the BTC.BTC and ETH.ETH pool, while nealy half of all asset-only deposits have gone into the TERRA.UST and the BNB.BUSD pool.  
 """
-create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/1af3facf-735b-4a48-9818-f7cda8e49000/data/latest')
+create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/1af3facf-735b-4a48-9818-f7cda8e49000/data/latest', 'bar')
     
 """
 ## Conclusion
