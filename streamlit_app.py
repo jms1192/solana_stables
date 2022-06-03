@@ -95,12 +95,13 @@ def create_premade_layout(layout, data_link, type = ''):
 
 
 """
-# Symmetric vs Asymmetric LPs
+# Stablecoin Landscape on DEXs
 
-On THORChain, you are allowed to add liquidity in 1 of 3 ways: Rune-only, asset-only, or symmetric (both Rune + asset). What is the breakdown of liquidity being added, according to those categories? Are there any trends over time or by pool?
-### What is Thorchain? 
+Analyse the stablecoin landscape on Sushiswap, identifying the various tokens available and their main metrics (volume, number of swaps, TVL, and other relevant for you). Which one is the most successful? Is it the same at Uniswap?
 
-Thorchain, which is built on the Cosmos blockchain, is a decentralized liquidity protocol that specializes in cross-chain connectivity, allowing traders to swap tokens between different networks. The native token of the Thorchain blockchian is RUNE.
+### What is Sushiswap? 
+
+SushiSwap is a decentralized cryptocurrency exchange and automated market maker built on Ethereum. Holders of SUSHI can participate in community governance and stake their tokens to receive a portion of SushiSwap's transaction fees.
 
 ### Methodology
 
