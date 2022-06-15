@@ -95,25 +95,23 @@ def create_premade_layout(layout, data_link, type = ''):
 
 
 """
-# Stablecoin Landscape on DEXs
+## Introduction
 
-Analyse the stablecoin landscape on Sushiswap, identifying the various tokens available and their main metrics (volume, number of swaps, TVL, and other relevant for you). Which one is the most successful? Is it the same at Uniswap?
+### What is Solana?
 
-### What is Sushiswap? 
+Solana is a public blockchain platform with smart contract functionality. Its native cryptocurrency is SOL. Solana offers low fees and fast transaction times. Solana smart contracts are written in Rust rather than solidity.
 
-SushiSwap is a decentralized cryptocurrency exchange and automated market maker built on Ethereum. Holders of SUSHI can participate in community governance and stake their tokens to receive a portion of SushiSwap's transaction fees.
+### What are Stablecoins 
+
+Stablecoins are cryptocurrencies where the price is designed to be pegged to a cryptocurrency, fiat money, or to exchange-traded commodities. Currently the vast majority of stable coins are pegged to the USD.  
 
 ### Methodology
 
-- We will look at the metrics of stablecoins USDC, USDT, DAI, UST, and FRAX on Uniswap, Curve, and Sushiswap  
+- We will look at the transaction volume and number of users of stable coin on Solana.
 
-- We are looking to what has the stablecoin landscape has been on Ethereum DEXs in 2022
+- The stable coins we will look at are SDC, USDT, UXD, USDH, PAI, NIRV, UST, DAI, and FRAX.
 
-## Stablecoin Swap Metrics 
 
-The two graphs below show the swap volume of DAI, USDC, USDT, FRAX, and UST on Curve, Uniswap, and Sushiswap since the start of 2022. Most weeks there has been between 3 and 8 Billion of stablecoin swap volume with most of the volume coming from USDC and USDT. Out of the algorithmic stablecoins in this chart DAI has had the largest swap volume on these DEXs. 
-
-#### Weekly Ethereum DEX Swap Volume by Stablecoin
 """
 
 create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/2ed8a2cc-6bf5-46db-8e8d-d10d234bc5c8/data/latest', 'bar')
