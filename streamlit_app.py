@@ -112,7 +112,7 @@ Stablecoins are cryptocurrencies where the price is designed to be pegged to a c
 
 - We will look at the transaction volume and number of users of stable coin on Solana.
 
-- The stable coins we will look at are USDC, USDT, USDH, PAI, NIRV, DAI, and FRAX.
+- The stable coins we will look at are USDC, USDT, USDH, PAI, USDT, and USDX.
 
 #### Monthly Solana Stablecoin Transfer Volume  
 """
