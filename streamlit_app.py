@@ -123,7 +123,7 @@ The two graphs above show the monthly and total transaction volume of the stable
 #### USDT/USDC Top contracts by Number of Stablecoin users 
 """    
 
-
+create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/010e3f77-a7b3-4491-9450-44779c406edb/data/latest')
 
 """
 #### USDT/USDC Top contracts by Number of Stablecoin Volume  
