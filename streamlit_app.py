@@ -88,7 +88,7 @@ def create_premade_layout(layout, data_link, type = '', num = 1):
             df = [x for x in data if x['BIG_CATEGORY'] == symbols3]
         else:
             big_category2 = big_category
-            symbols4 = st.selectbox("", big_category2)
+            symbols4 = st.selectbox("USDT", big_category2)
             df = [x for x in data if x['BIG_CATEGORY'] == symbols4]
             
         if len(df) > 10:
