@@ -120,18 +120,17 @@ create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2
 
 The two graphs above show the monthly and total transaction volume of the stablecoins USDC, USDT, USDH, PAI, USDT, and USDX on Solanan. These graphs show that almost all of the stablecoin volume on Solanan is using USDC and USDT. Other than the top 2 stablecoins UST and PAI have made up most of the remaining stablecoin volume on Solana in 2022.
 
-
-"""
-create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/1af3facf-735b-4a48-9818-f7cda8e49000/data/latest', 'bar')
-    
-"""
-The graph below shows the breakdown of stablecoins by swap volume on Sushiswap, Uniswap, and Curve. The volume of DAI on SushiSwap is a much larger percent of the swap volume than any other DEX and is the only dex to not have swap volume dominated by USDC and USDT. 
-
-#### Stablecoin Swap Volume by DEX 
+#### USDT/USDC Top contracts by Number of Stablecoin users 
 """    
 
 create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/010e3f77-a7b3-4491-9450-44779c406edb/data/latest')
-   
+
+"""
+#### USDT/USDC Top contracts by Number of Stablecoin Volume  
+"""
+
+create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/fdf89f39-1048-40f1-8fa8-83966d623d98/data/latest')
+
 """
 # Conclusion 
 
