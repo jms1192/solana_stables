@@ -8,7 +8,7 @@ import requests
 import plotly.express as px
 
 
-def create_premade_layout(layout, data_link, type = ''):
+def create_premade_layout(layout, data_link, type = '', num = 1):
 
     data = requests.get(data_link).json()
 
@@ -82,10 +82,14 @@ def create_premade_layout(layout, data_link, type = ''):
         for i in symbols:
             if i not in big_category:
                 big_category.append(i)
-                
-        symbols3 = st.selectbox("", big_category)
-
-        df = [x for x in data if x['BIG_CATEGORY'] == symbols3]
+        
+        if num = 1:
+            symbols3 = st.selectbox("", big_category)
+            df = [x for x in data if x['BIG_CATEGORY'] == symbols3]
+        else:
+            symbols4 = st.selectbox("", big_category)
+            df = [x for x in data if x['BIG_CATEGORY'] == symbols4]
+            
         if len(df) > 10:
             df = sorted(df, key=lambda x: x['VALUE'], reverse=True)
             df = df[0:10]
@@ -129,7 +133,7 @@ create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v
 #### USDT/USDC Top contracts by Number of Stablecoin Volume  
 """
 
-create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/fdf89f39-1048-40f1-8fa8-83966d623d98/data/latest')
+create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/fdf89f39-1048-40f1-8fa8-83966d623d98/data/latest', num = 2)
 
 """
 # Conclusion 
