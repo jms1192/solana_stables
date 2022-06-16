@@ -85,12 +85,10 @@ def create_premade_layout(layout, data_link, type = '', num = 1):
         
         if num == 1:
             symbols3 = st.selectbox("", big_category)
-            df = [x for x in data if x['BIG_CATEGORY'] == symbols3]
-        else:
-            big_category2 = big_category
-            symbols4 = st.selectbox("USDT", big_category2)
-            df = [x for x in data if x['BIG_CATEGORY'] == symbols4]
-            
+        else
+            symbols3 = st.selectbox("-", big_category)
+    
+        df = [x for x in data if x['BIG_CATEGORY'] == symbols3] 
         if len(df) > 10:
             df = sorted(df, key=lambda x: x['VALUE'], reverse=True)
             df = df[0:10]
