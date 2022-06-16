@@ -147,7 +147,7 @@ create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v
 """
 
 st.code(
-  from collections import namedtuple
+from collections import namedtuple
 import altair as alt
 import math
 import pandas as pd
