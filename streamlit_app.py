@@ -111,7 +111,7 @@ Stablecoins are cryptocurrencies where the price is designed to be pegged to a c
 
 - The stable coins we will look at are USDC, USDT, USDH, PAI, NIRV, DAI, and FRAX.
 
-#### Monthly Solana Stablecoin Transfers 
+#### Monthly Solana Stablecoin Transfer Volume  
 """
 
 create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/031a2b48-6fca-43d5-a4c7-db0699058798/data/latest', 'bar')
