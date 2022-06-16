@@ -111,15 +111,16 @@ Stablecoins are cryptocurrencies where the price is designed to be pegged to a c
 
 - The stable coins we will look at are USDC, USDT, USDH, PAI, NIRV, DAI, and FRAX.
 
-
+#### Monthly Solana Stablecoin Transfers 
 """
 
 create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/031a2b48-6fca-43d5-a4c7-db0699058798/data/latest', 'bar')
 
 """
-The two graphs below show ETH stablecoin swap volumes broken up by DEX. overall  the DEX with the most consistent stablecoin volume was uniswap v3. Curve occasionally had large bursts of very high stablecoin swap volumes. 
- 
-#### Weekly Ethereum DEX Swap Volume by Stablecoin
+
+The two graphs above show the monthly and total transaction volume of the stablecoins USDC, USDT, USDH, PAI, USDT, and USDX on Solanan. These graphs show that almost all of the stablecoin volume on Solanan is using USDC and USDT. Other than the top 2 stablecoins UST and PAI have made up most of the remaining stablecoin volume on Solana in 2022.
+
+
 """
 create_premade_layout('2d-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/1af3facf-735b-4a48-9818-f7cda8e49000/data/latest', 'bar')
     
