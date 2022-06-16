@@ -130,7 +130,7 @@ The graph below shows the breakdown of stablecoins by swap volume on Sushiswap, 
 #### Stablecoin Swap Volume by DEX 
 """    
 
-create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/ddbccbf5-0560-4f67-943f-246ee7864873/data/latest')
+create_premade_layout('pie-layout-1', 'https://node-api.flipsidecrypto.com/api/v2/queries/010e3f77-a7b3-4491-9450-44779c406edb/data/latest')
    
 """
 # Conclusion 
